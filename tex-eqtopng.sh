@@ -27,6 +27,6 @@ echo
 
 convert -density 300 $TEMPDIR/file.pdf -quality 100 -colorspace RGB png:-
 
-#rm -rf $TEMPDIR
+rm -rf $TEMPDIR
 
 
