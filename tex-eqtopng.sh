@@ -25,7 +25,7 @@ pdflatex --output-directory $TEMPDIR $TEXFILE > /dev/null
 echo "Content-Type: image/png"
 echo
 
-convert -density 300 $TEMPDIR/file.pdf -quality 100 -colorspace RGB png:-
+convert -density 300 -background white -alpha remove -quality 50 -colorspace RGB $TEMPDIR/file.pdf png:-
 
 rm -rf $TEMPDIR
 
