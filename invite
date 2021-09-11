@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+echo "Location: https://discord.com/api/oauth2/authorize?client_id=$(jq .client_id credentials.json -r)&scope=applications.commands"
+echo
+echo
+

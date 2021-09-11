@@ -1,0 +1,12 @@
+{
+	"name": "tex",
+	"description": "Render Math using LaTeX",
+	"options": [
+		{
+			"name": "latex",
+			"description": "LaTeX compatible math expression",
+			"type": 3,
+			"required": true
+		}
+	]
+}
