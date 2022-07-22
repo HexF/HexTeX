@@ -27,11 +27,11 @@ if [[ $OPTION_LENGTH -eq 0 ]]; then
     echo
     echo -n '{"type": 9, "data":{"custom_id": "tex-render", "title": "Render LaTeX w/ HeXTeX", "components": [{"type":1, "components":['
     echo -n '{"type": 4, "custom_id": "latex", "style": 2, "label":"LaTeX Code", "placeholder": "'
-cat <<PLACEHOLDERS
+cat <<PLACEHOLDERS | shuf -n1 | tr -d '[:space:]'
 $e = \pi = 3$
 $1 + 1 = 10$
 $\cos{x} = \sin{x}$
-PLACEHOLDERS | shuf -n1 | tr -d '[:space:]'
+PLACEHOLDERS
     echo -n '"}'
     echo ']}]}}'
 else
