@@ -1,0 +1,20 @@
+[
+    {
+        "label": "Math",
+        "value": "math",
+        "description": "Renders a single equation",
+        "default": true
+    },
+    {
+        "label": "None",
+        "value": "none",
+        "description": "Has initial preamble, but can be supplied any environment",
+        "default": false
+    },
+    {
+        "label": "No Preamble",
+        "value": "nopreamble",
+        "description": "No preamble is provided - just an empty TeX document",
+        "default": false
+    }
+]

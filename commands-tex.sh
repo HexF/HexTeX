@@ -22,6 +22,7 @@ if [[ $OPTION_LENGTH -eq 0 ]]; then
     echo "Content-Type: application/json"
     echo
     echo -n '{"type": 9, "data":{"custom_id": "tex-render", "title": "Render LaTeX w/ HeXTeX", "components": [{"type":1, "components":['
+    echo -n '{"type": 3, "custom_id": "env", "options":'"$(jq '.' 'tex-environments/environments.json' -c)"'},'
     echo -n '{"type": 4, "custom_id": "latex", "style": 2, "label":"LaTeX Code", "placeholder": "'
 cat <<PLACEHOLDERS | shuf -n1 | tr -d '\n'
 \$e = \\\\pi = 3$
