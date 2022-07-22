@@ -62,36 +62,25 @@ else
     echo 'Content-Disposition: form-data; name="payload_json"'
     echo "Content-Type: application/json"
     echo
-    echo '{"type": 4, "data":{"embeds":[{"title":"Failed to Render"}], "attachments": [{"id":0, "description":"pdf2png stdout", "filename":"con.log"},{"id":1, "description":"pdf2png stderr", "filename":"con-err.log"},{"id":2, "description":"pdflatex stdout", "filename":"tex.log"},{"id":3, "description":"pdflatex stderr", "filename":"tex-err.log"}]}}'
+    echo '{"type": 4, "data":{"embeds":[{"title":"Failed to Render"}], "attachments": [{"id":0, "description":"Error Logs", "filename":"error.log"}]}}'
 
     # Send through the logs
     putboundary
-    echo 'Content-Disposition: form-data; name="files[0]"; filename="con.log"'
+    echo 'Content-Disposition: form-data; name="files[0]"; filename="error.log"'
     echo "Content-Type: text/plain"
     echo
+
+    echo "===pdf2png stdout==="
     cat $TEMPDIR/con.log || echo "[empty]"
-    echo
 
-    putboundary
-    echo 'Content-Disposition: form-data; name="files[1]"; filename="con-err.log"'
-    echo "Content-Type: text/plain"
-    echo
+    echo "===pdf2png stderr==="
     cat $TEMPDIR/con-err.log || echo "[empty]"
-    echo
 
-    putboundary
-    echo 'Content-Disposition: form-data; name="files[2]"; filename="tex.log"'
-    echo "Content-Type: text/plain"
-    echo
+    echo "===pdflatex stdout==="
     cat $TEMPDIR/tex.log || echo "[empty]"
-    echo
 
-    putboundary
-    echo 'Content-Disposition: form-data; name="files[3]"; filename="tex-err.log"'
-    echo "Content-Type: text/plain"
-    echo
+    echo "===pdflatex stderr==="
     cat $TEMPDIR/tex-err.log || echo "[empty]"
-    echo
 
 fi
 
