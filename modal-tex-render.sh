@@ -42,18 +42,7 @@ else
     echo "Content-Type: text/plain"
     echo
 
-    echo "===pdf2png stdout==="
-    cat $TEMPDIR/con.log || echo "[empty]"
-
-    echo "===pdf2png stderr==="
-    cat $TEMPDIR/con-err.log || echo "[empty]"
-
-    echo "===pdflatex stdout==="
-    cat $TEMPDIR/tex.log || echo "[empty]"
-
-    echo "===pdflatex stderr==="
-    cat $TEMPDIR/tex-err.log || echo "[empty]"
-
+    cat $TEMPDIR/aggr.log
 fi
 
 
