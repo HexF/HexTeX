@@ -46,7 +46,7 @@ if [ $? -eq 0 ]; then
     echo 'Content-Disposition: form-data; name="payload_json"'
     echo "Content-Type: application/json"
     echo
-    echo '{"type": 4, "data":{"embeds":[{"image":{"url":"attachment://tex.png"}}], "components":[{"type": 1", "components": [{"type":2, "style":4,"label":"delete","custom_id":"tex-delete"}]}]}}'
+    echo '{"type": 4, "data":{"embeds":[{"image":{"url":"attachment://tex.png"}}], "components":[{"type": 1, "components": [{"type":2, "style":4,"label":"Delete","custom_id":"tex-delete"}]}]}}'
     
     putboundary
     # Send through the image
