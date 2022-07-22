@@ -5,10 +5,6 @@
 BOUNDARY="boundary"
 TEMPDIR=$(mktemp -d)
 
-
-API_ENDPOINT="https://discord.com/api/v8"
-TOKEN=$(jq '.token' "$1" -r)
-
 OPTION_LENGTH=$(jq '.data.options | length' "$1" -r )
 
 putboundary(){
