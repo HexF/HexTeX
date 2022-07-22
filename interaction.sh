@@ -46,9 +46,10 @@ elif [[ $REQ_TYPE -eq 2 ]]; then
 	# Interaction!
 
 	bash commands-$(jq '.data.name' "$REQUEST_BODY" -r).sh "$REQUEST_BODY"
-
-	
+elif [[ $REQ_TYPE -eq 3]]; then
+	bash component-$(jq '.data.custom_id' "$REQUEST_BODY" -r).sh "$REQUEST_BODY"
 fi
+
 
 rm "$REQUEST_BODY"
 
