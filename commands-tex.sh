@@ -70,7 +70,7 @@ else
     echo 'Content-Disposition: form-data; name="files[0]"; filename="con.log"'
     echo "Content-Type: text/plain"
     echo
-    cat $TEMPDIR/con.log
+    cat $TEMPDIR/con.log || echo "[empty]"
     echo
 
     echo -e "\r"
@@ -78,7 +78,7 @@ else
     echo 'Content-Disposition: form-data; name="files[1]"; filename="con-err.log"'
     echo "Content-Type: text/plain"
     echo
-    cat $TEMPDIR/con-err.log
+    cat $TEMPDIR/con-err.log || echo "[empty]"
     echo
 
     echo -e "\r"
@@ -86,7 +86,7 @@ else
     echo 'Content-Disposition: form-data; name="files[2]"; filename="tex.log"'
     echo "Content-Type: text/plain"
     echo
-    cat $TEMPDIR/tex.log
+    cat $TEMPDIR/tex.log || echo "[empty]"
     echo
 
     echo -e "\r"
@@ -94,7 +94,7 @@ else
     echo 'Content-Disposition: form-data; name="files[3]"; filename="tex-err.log"'
     echo "Content-Type: text/plain"
     echo
-    cat $TEMPDIR/tex-err.log
+    cat $TEMPDIR/tex-err.log || echo "[empty]"
     echo
 
 
