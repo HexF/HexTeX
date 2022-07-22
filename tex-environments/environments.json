@@ -3,13 +3,13 @@
         "label": "Math",
         "value": "math",
         "description": "Renders a single equation",
-        "default": true
+        "default": false
     },
     {
         "label": "None",
         "value": "none",
         "description": "Has initial preamble, but can be supplied any environment",
-        "default": false
+        "default": true
     },
     {
         "label": "No Preamble",
