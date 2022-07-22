@@ -8,7 +8,8 @@ TEMPDIR=$(mktemp -d)
 
 API_ENDPOINT="https://discord.com/api/v8"
 TOKEN=$(jq '.token' "$1" -r)
-LATEX_LENGTH=$(jq '.data.options[] | select(.name=="latex").value' "$1" -c | wc)
+
+OPTION_LENGTH=$(jq '.data.options | length' "$1" -r )
 
 putboundary(){
     echo -e "\r\n--${BOUNDARY}$1"
@@ -18,14 +19,14 @@ echo "Content-Type: multipart/form-data; boundary=$BOUNDARY"
 echo "Status: 200 OK"
 echo
 
-if [[ $LATEX_LENGTH -eq 0 ]]; then
+if [[ $OPTION_LENGTH -eq 0 ]]; then
     # Launch a modal
     putboundary
     echo 'Content-Disposition: form-data; name="payload_json"'
     echo "Content-Type: application/json"
     echo
-    echo '{"type": 9, "data":{"custom_id": "tex-render", "title": "Render LaTeX w/ HeXTeX", "components": ['
-    echo '{"type": 4, "custom_id": "latex", "style": 2, "label":"LaTeX Code"}'
+    echo -n '{"type": 9, "data":{"custom_id": "tex-render", "title": "Render LaTeX w/ HeXTeX", "components": ['
+    echo -n '{"type": 4, "custom_id": "latex", "style": 2, "label":"LaTeX Code"}'
     echo ']}}'
 else
 

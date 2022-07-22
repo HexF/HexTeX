@@ -12,7 +12,7 @@ cat <<END > $TEXFILE
     \[
 END
 
-cat $TEMPDIR/src.tex
+cat $TEMPDIR/src.tex >> $TEXFILE
 
 cat <<END >> $TEXFILE
 \]
