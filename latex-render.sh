@@ -2,7 +2,7 @@ TEMPDIR=$1
 TEXENV=$2
 TEXFILE=$TEMPDIR/file.tex
 
-sed -e "/@CONTENT@/$TEMPDIR/src.tex" -e "d}" "tex-environments/$TEXENV.tex" > $TEXFILE
+sed -e "/@CONTENT@/{r $TEMPDIR/src.tex" -e "d}" "tex-environments/$TEXENV.tex" > $TEXFILE
 
 pdflatex --output-directory $TEMPDIR $TEXFILE >$TEMPDIR/tex.log 2>$TEMPDIR/tex-err.log && \
     convert -density 300 -background white -alpha remove -quality 50 -colorspace RGB $TEMPDIR/file.pdf $TEMPDIR/file.png >$TEMPDIR/con.log 2>$TEMPDIR/con-err.log
