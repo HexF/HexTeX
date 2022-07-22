@@ -1,5 +1,6 @@
 TEMPDIR=$(mktemp -d)
 TEXFILE=$TEMPDIR/file.tex
+BOUNDARY="boundary"
 putboundary(){
     echo -e "\r\n--${BOUNDARY}$1"
 }
@@ -8,7 +9,7 @@ echo "Content-Type: multipart/form-data; boundary=$BOUNDARY"
 echo "Status: 200 OK"
 echo
 
-jq '.data.components[0][0].value' -r >> $TEMPDIR/src.tex
+jq '.data.components[0].components[0].value' -r >> $TEMPDIR/src.tex
 
 bash latex-render.sh "$TEMPDIR"
 
