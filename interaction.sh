@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-echo -e "Content-Type: application/json"
-
 check_signature(){
 	local pub=$1
 	local sig=$2
@@ -27,16 +25,19 @@ cat > "$REQUEST_BODY"
 check_signature $PUBLIC_KEY $HTTP_X_SIGNATURE_ED25519 $HTTP_X_SIGNATURE_TIMESTAMP "$REQUEST_BODY"
 
 if [[ $? -eq 1 ]]; then
+	echo -e "Content-Type: application/json"
 	echo "Status: 401 Unauthorized"
 	echo
 
 	echo '{"message":"Signature verification failed"}'
+	exit 0
 fi
 
 REQ_TYPE=$(jq '.type' "$REQUEST_BODY" -r )
 
 if [[ $REQ_TYPE -eq 1 ]]; then
 	# Ping!
+	echo -e "Content-Type: application/json"
 	echo "Status: 200 OK"
 	echo
 
