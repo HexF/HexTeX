@@ -11,7 +11,7 @@ echo
 
 jq '.data.components[0].components[0].value' "$1" -r >> $TEMPDIR/src.tex
 
-bash latex-render.sh "$TEMPDIR"
+bash latex-render.sh "$TEMPDIR" "math"
 
 if [ $? -eq 0 ]; then
     # Success! 

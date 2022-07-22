@@ -34,7 +34,7 @@ else
 
     jq '.data.options[] | select(.name=="latex").value' "$1" -r >> $TEMPDIR/src.tex
 
-    bash latex-render.sh "$TEMPDIR"
+    bash latex-render.sh "$TEMPDIR" "math"
 
     if [ $? -eq 0 ]; then
         # Success! 

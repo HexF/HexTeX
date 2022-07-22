@@ -5,7 +5,7 @@ TEXFILE=$TEMPDIR/file.tex
 
 echo $QUERY_STRING | base64 -d >> $TEMPDIR/src.tex
 
-bash latex-render.sh "$TEMPDIR"
+bash latex-render.sh "$TEMPDIR" "math"
 
 echo "Content-Type: image/png"
 echo
