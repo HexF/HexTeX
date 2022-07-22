@@ -6,6 +6,7 @@ TEXFILE=$TEMPDIR/file.tex
 cat <<END > $TEXFILE
 \documentclass[border=2pt]{standalone}
 \usepackage{amsmath}
+\usepackage{amsfonts}
 \usepackage{varwidth}
 \begin{document}
 \begin{varwidth}{\linewidth}
