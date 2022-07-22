@@ -62,7 +62,42 @@ else
     echo 'Content-Disposition: form-data; name="payload_json"'
     echo "Content-Type: application/json"
     echo
-    echo '{"type": 4, "data":{"embeds":[{"title":"Failed to Render"}]}}'
+    echo '{"type": 4, "data":{"embeds":[{"title":"Failed to Render"}], "attachments": [{"id":0, "description":"pdf2png stdout", "filename":"con.log"},{"id":1, "description":"pdf2png stderr", "filename":"con-err.log"},{"id":2, "description":"pdflatex stdout", "filename":"tex.log"},{"id":3, "description":"pdflatex stderr", "filename":"tex-err.log"}]}}'
+
+    # Send through the logs
+    echo -e "\r"
+    echo "--$BOUNDARY"
+    echo 'Content-Disposition: form-data; name="files[0]"; filename="con.log"'
+    echo "Content-Type: text/plain"
+    echo
+    cat $TEMPDIR/con.log
+    echo
+
+    echo -e "\r"
+    echo "--$BOUNDARY"
+    echo 'Content-Disposition: form-data; name="files[1]"; filename="con-err.log"'
+    echo "Content-Type: text/plain"
+    echo
+    cat $TEMPDIR/con-err.log
+    echo
+
+    echo -e "\r"
+    echo "--$BOUNDARY"
+    echo 'Content-Disposition: form-data; name="files[2]"; filename="tex.log"'
+    echo "Content-Type: text/plain"
+    echo
+    cat $TEMPDIR/tex.log
+    echo
+
+    echo -e "\r"
+    echo "--$BOUNDARY"
+    echo 'Content-Disposition: form-data; name="files[3]"; filename="tex-err.log"'
+    echo "Content-Type: text/plain"
+    echo
+    cat $TEMPDIR/tex-err.log
+    echo
+
+
     # Done
     echo -e "\r"
     echo "--$BOUNDARY--"
