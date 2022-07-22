@@ -21,16 +21,16 @@ if [[ $OPTION_LENGTH -eq 0 ]]; then
     echo 'Content-Disposition: form-data; name="payload_json"'
     echo "Content-Type: application/json"
     echo
-    echo -n '{"type": 9, "data":{"custom_id": "tex-render", "title": "Render LaTeX w/ HeXTeX", "components": [{"type":1, "components":['
-    echo -n '{"type": 3, "custom_id": "env", "options":'"$(jq '.' 'tex-environments/environments.json' -c)"'},'
-    echo -n '{"type": 4, "custom_id": "latex", "style": 2, "label":"LaTeX Code", "placeholder": "'
+    echo -n '{"type": 9, "data":{"custom_id": "tex-render", "title": "Render LaTeX w/ HeXTeX", "components": ['
+    echo -n '{"type":1, "components":[{"type": 3, "custom_id": "texenv", "options":'"$(jq '.' 'tex-environments/environments.json' -c)"'}]},'
+    echo -n '{"type":1, "components":[{"type": 4, "custom_id": "latex", "style": 2, "label":"LaTeX Code", "placeholder": "'
 cat <<PLACEHOLDERS | shuf -n1 | tr -d '\n'
 \$e = \\\\pi = 3$
 \$1 + 1 = 10$
 $\\\\cos{x} = \\\\sin{x}$
 PLACEHOLDERS
-    echo -n '"}'
-    echo ']}]}}'
+    echo -n '"}]}'
+    echo ']}}'
 else
 
     jq '.data.options[] | select(.name=="latex").value' "$1" -r >> $TEMPDIR/src.tex
