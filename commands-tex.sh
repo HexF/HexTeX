@@ -24,7 +24,7 @@ if [[ $OPTION_LENGTH -eq 0 ]]; then
     echo -n '{"type": 9, "data":{"custom_id": "tex-render", "title": "Render LaTeX w/ HeXTeX", "components": [{"type":1, "components":['
     echo -n '{"type": 4, "custom_id": "latex", "style": 2, "label":"LaTeX Code", "placeholder": "'
 cat <<PLACEHOLDERS | shuf -n1 | tr -d '\n'
-$e = \\\\pi = 3$
+\$e = \\\\pi = 3$
 \$1 + 1 = 10$
 $\\\\cos{x} = \\\\sin{x}$
 PLACEHOLDERS
