@@ -6,6 +6,9 @@ BOUNDARY="boundary"
 TEMPDIR=$(mktemp -d)
 TEXFILE=$TEMPDIR/file.tex
 
+API_ENDPOINT="https://discord.com/api/v8"
+TOKEN=$(jq '.token' "$1" -r)
+
 putboundary(){
     echo -e "\r\n--${BOUNDARY}$1"
 }
@@ -46,7 +49,7 @@ if [ $? -eq 0 ]; then
     echo 'Content-Disposition: form-data; name="payload_json"'
     echo "Content-Type: application/json"
     echo
-    echo '{"type": 4, "data":{"embeds":[{"image":{"url":"attachment://tex.png"}}], "components":[{"type": 1, "components": [{"type":2, "style":4,"label":"Delete","custom_id":"tex-delete"}]}]}}'
+    echo '{"type": 4, "data":{"embeds":[{"image":{"url":"attachment://tex.png"}}]}}'
     
     putboundary
     # Send through the image
