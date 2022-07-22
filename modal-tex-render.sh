@@ -9,9 +9,9 @@ echo "Content-Type: multipart/form-data; boundary=$BOUNDARY"
 echo "Status: 200 OK"
 echo
 
-jq '.data.components[0].components[0].value' "$1" -r >> $TEMPDIR/src.tex
+jq '.data.components[] | select(.components[0].name=="latex").components[0].value' "$1" -r >> $TEMPDIR/src.tex
 
-bash latex-render.sh "$TEMPDIR" "math"
+bash latex-render.sh "$TEMPDIR" "$(jq '.data.components[] | select(.components[0].name=="texenv").components[0].value' "$1" -r)"
 
 if [ $? -eq 0 ]; then
     # Success! 
