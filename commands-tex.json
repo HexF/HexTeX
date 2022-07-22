@@ -4,9 +4,9 @@
 	"options": [
 		{
 			"name": "latex",
-			"description": "LaTeX compatible math expression",
+			"description": "LaTeX compatible math expression. If not provided, will launch a modal.",
 			"type": 3,
-			"required": true
+			"required": false
 		}
 	]
 }
